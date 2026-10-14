@@ -139,6 +139,7 @@ def on_press(key):
 
 
 def start_logger():
+    global mouse_listener, keyboard_listener
 
     mouse_listener = mouse.Listener(
     on_move=on_move, 
