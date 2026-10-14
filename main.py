@@ -104,6 +104,8 @@ def on_press(key):
         print("Exiting listeners...")
         if mouse_listener:
             mouse_listener.stop()  # Stop the mouse listener
+        if keyboard_listener:
+            keyboard_listener.stop()
         return False               # Stop the keyboard listener
 
 
