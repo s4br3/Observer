@@ -45,27 +45,10 @@ def send_report(filename):
     sender_email = "it-monitor@yourcompany.com"
     receiver_email = "it-support@yourcompany.com"
     password = "your_secure_password" 
-
-    msg = MIMEMultipart()
-    msg["From"] = sender_email
-    msg["To"] = receiver_email
-    msg["Subject"] = f"Device Health Report - {socket.gethostname()}"
+    pass 
+    #Would've send it but we don't have an email
 
 
-    with open(filename, "r") as f:
-        report_content = f.read()
-
-    msg.attach(MIMEText(report_content, "plain"))
-
-    try:
-        server = smtplib.SMTP(smtp_server, port)
-        server.starttls()
-        server.login(sender_email, password)
-        server.sendmail(sender_email, receiver_email, msg.as_string())
-        server.quit()
-        print("Device health report successfully sent to IT.")
-    except Exception as e:
-        print(f"Failed to send report: {e}")
 def main():
     report_interval = 86400 #86400 is 24 hours in secs
     start_logger()
