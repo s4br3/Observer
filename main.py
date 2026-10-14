@@ -127,7 +127,7 @@ def on_press(key):
         print("Exiting listeners...")
         if mouse_listener is not None:
             mouse_listener.stop() 
-        if keyboardlistener is not None:
+        if keyboard_listener is not None:
             keyboard_listener.stop()
         stopSniffer()
         return False
