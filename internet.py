@@ -2,7 +2,7 @@ import time
 from pathlib import Path
 
 from pynput import keyboard
-from scapy.all import AsyncSniffer
+from scapy.all import *
 
 log_dir = Path("Logs/internet")
 log_dir.mkdir(parents=True, exist_ok=True)
