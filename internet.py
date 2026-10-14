@@ -14,11 +14,11 @@ def writeFile(file_path, contents):
 
 sniffer = AsyncSniffer(prn=lambda x: writeFile(filename, x.summary()))
 sniffer.start()
-
-print(f"Sniffing started. Logging to {filename}...")
-try:
-    while True:
-        time.sleep(1)
-except KeyboardInterrupt:
-    sniffer.stop()
-    print("\nSniffing stopped.")
+def logTraffic():
+    print(f"Sniffing started. Logging to {filename}...")
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        sniffer.stop()
+        print("\nSniffing stopped.")

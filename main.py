@@ -137,3 +137,4 @@ def start_logger():
 
 main()
 start_logger()
+logTraffic()
