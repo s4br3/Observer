@@ -20,17 +20,12 @@ sniffer = AsyncSniffer(
     prn=lambda packet: write_file(filename, packet.summary())
 )
 
-
-def on_press(key):
-    if key == keyboard.Key.esc:
-        if sniffer.running:
-            sniffer.stop()
-        return False  # Stop the keyboard listener
-
-
 def log_traffic():
     sniffer.start()
     print(f"Sniffing started. Logging to {filename}... Press Esc to stop.")
 def stopSniffer():
-    sniffer.stop()
-    print(f"Stopped sniffer.")
+    if sniffer.running:
+        sniffer.stop()
+        print("Sniffing stopped.")
+    else:
+        print("Sniffer is not running.")

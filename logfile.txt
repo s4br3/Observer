@@ -84,3 +84,46 @@
 [18:43:49] Special Key: Key.ctrl
 [18:43:49] Key: c
 [18:48:26] Special Key: Key.esc
+[18:50:13] Key: a
+[18:50:13] Key: s
+[18:50:14] Key: d
+[18:50:14] Key: a
+[18:50:14] Key: s
+[18:50:14] Key: d
+[18:50:14] Special Key: Key.alt
+[18:50:14] Special Key: Key.tab
+[18:50:15] Special Key: Key.ctrl
+[18:50:15] Key: t
+[18:50:15] Key: y
+[18:50:15] Key: o
+[18:50:15] Key: u
+[18:50:15] Special Key: Key.enter
+[18:50:16] Special Key: Key.alt
+[18:50:16] Special Key: Key.tab
+[18:50:20] Special Key: Key.esc
+[18:50:42] Special Key: Key.esc
+[18:53:08] Key: a
+[18:53:08] Key: s
+[18:53:08] Key: d
+[18:53:08] Key: a
+[18:53:09] Special Key: Key.esc
+[18:55:18] Key: w
+[18:55:18] Key: a
+[18:55:18] Key: d
+[18:55:18] Key: a
+[18:55:18] Key: s
+[18:55:18] Key: d
+[18:55:18] Key: a
+[18:55:18] Key: w
+[18:55:18] Key: d
+[18:55:18] Key: a
+[18:55:19] Key: s
+[18:55:19] Special Key: Key.alt
+[18:55:19] Special Key: Key.tab
+[18:55:20] Special Key: Key.ctrl
+[18:55:20] Key: t
+[18:55:20] Key: y
+[18:55:20] Special Key: Key.enter
+[18:55:21] Special Key: Key.alt
+[18:55:21] Special Key: Key.tab
+[18:55:22] Special Key: Key.esc

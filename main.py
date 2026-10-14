@@ -104,7 +104,9 @@ def on_scroll(x, y, dx, dy):
     direction = 'down' if dy < 0 else 'up'
     print(f'Scrolled {direction} at ({x}, {y}) - {get_timestamp()}')
 
+global mouse_listener
 mouse_listener = None
+global keyboard_listener
 keyboard_listener = None
 
 def on_press(key):
@@ -123,10 +125,9 @@ def on_press(key):
 
     if key == keyboard.Key.esc:
         print("Exiting listeners...")
-        if mouse_listener:
+        if mouse_listener is not None:
             mouse_listener.stop() 
-             # Stop the mouse listener
-        if keyboard_listener:
+        if keyboardlistener is not None:
             keyboard_listener.stop()
         stopSniffer()
         return False
@@ -150,8 +151,6 @@ def start_logger():
 
     keyboard_listener.start()
     mouse_listener.start()
-    keyboard_listener.join()
-    mouse_listener.join()
 
 log_traffic()
 main()
