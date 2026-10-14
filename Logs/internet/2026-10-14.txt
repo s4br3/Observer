@@ -1,0 +1,12 @@
+Ether / IP / TCP 172.22.60.86:47232 > 173.194.5.40:https A
+Ether / IP / TCP 173.194.5.40:https > 172.22.60.86:47232 A
+Ether / IP / TCP 172.22.60.86:41202 > 198.252.206.1:https PA / Raw
+Ether / IP / TCP 198.252.206.1:https > 172.22.60.86:41202 PA / Raw
+Ether / IP / TCP 172.22.60.86:41202 > 198.252.206.1:https A
+Ether / IP / TCP 172.22.60.86:52992 > 173.194.3.131:https A
+Ether / IP / TCP 173.194.3.131:https > 172.22.60.86:52992 A
+Ether / IP / TCP 172.22.60.86:41194 > 198.252.206.1:https PA / Raw
+Ether / IP / TCP 198.252.206.1:https > 172.22.60.86:41194 PA / Raw
+Ether / IP / TCP 172.22.60.86:41194 > 198.252.206.1:https A
+Ether / IP / TCP 172.22.60.86:59570 > 173.194.5.40:https A
+Ether / IP / TCP 173.194.5.40:https > 172.22.60.86:59570 A

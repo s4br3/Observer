@@ -23,21 +23,14 @@ sniffer = AsyncSniffer(
 
 def on_press(key):
     if key == keyboard.Key.esc:
+        if sniffer.running:
+            sniffer.stop()
         return False  # Stop the keyboard listener
 
 
 def log_traffic():
     sniffer.start()
     print(f"Sniffing started. Logging to {filename}... Press Esc to stop.")
-
-    with keyboard.Listener(on_press=on_press) as listener:
-        listener.join()
-
-    if sniffer.running:
-        sniffer.stop()
-
-    print("\nSniffing stopped.")
-
-
-if __name__ == "__main__":
-    log_traffic()
+def stopSniffer():
+    sniffer.stop()
+    print(f"Stopped sniffer.")

